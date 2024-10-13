@@ -91,6 +91,14 @@ void swap(int& a, int& b)
   a = b;
   b = temp;
 }
+void swap(char& a, char& b)
+{
+  // need to save a value temporarily so we can move things
+  // around successfully.
+  int temp = a;
+  a = b;
+  b = temp;
+}
 
 /** @brief sort three values in ascending order
  *
@@ -110,6 +118,28 @@ void swap(int& a, int& b)
  *    value in b.
  */
 void threeSort(int& a, int& b, int& c)
+{
+  // swap a, b if out of order, guarantees larger of the two is now in b
+  if (a > b)
+  {
+    swap(a, b);
+  }
+
+  // swap b, c if out of order, guarantees that largest values has been
+  // now bubbled to c
+  if (b > c)
+  {
+    swap(b, c);
+  }
+
+  // it is still possible after this "bubble pass" that a and b are out of
+  // order, so check and swap them if needed
+  if (a > b)
+  {
+    swap(a, b);
+  }
+}
+void threeSort(char& a, char& b, char& c)
 {
   // swap a, b if out of order, guarantees larger of the two is now in b
   if (a > b)
